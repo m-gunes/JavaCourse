@@ -6,11 +6,16 @@ public class lesson41 {
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		System.out.print("Bir yazi giriniz:");
 		String s = kb.nextLine();
-		System.out.printf("%s length is %d%n",s.toUpperCase(), s.length());
 		int len = s.length();
+
+		System.out.printf("%s length is %d%n",s.toUpperCase(), len);
 		
-		char c = s.charAt(5);
-		System.out.printf("c = %c%n", c);
+		for(int i = 0; i < len; ++i)
+			System.out.printf("%c ", s.charAt(i));
 		
+		
+		System.out.println();
+		char c = s.charAt(5);    
+		System.out.printf("c = %c%n", c); // s.length() - 1 < 5 ? ERROR : 5th char of s
 	}
 }
