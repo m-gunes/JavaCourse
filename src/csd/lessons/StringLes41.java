@@ -12,7 +12,6 @@
 	yazının tüm karakterlerini büyük harfe çevirir. Şüphesiz küçük/büyük harf karşılığı olmayan karakterlerin aynıları
 	alınır. Bu metotların bu bölümde yalnızca parametresiz overload'ları ele alınacaktır (isImmutable)
 	
-	
 	Derleyici özdeş string literal'lar için aynı adresin verileceği kodu üretir. Yani özdeş string'lere ilişkin bir tane
 	nesne yaratılmış olur. Zaten sınıf immutable olduğundan iki referansın aynı nesneyi göstermesi durumunda nesnenin
 	içeriği değiştirelemezdir, bu da herhangi bir probleme yol açmaz. Bu durumda bellek efektif olarak kullanılmış olur.
@@ -95,13 +94,12 @@ public class StringLes41 {
 		String s2 = kb.nextLine();
 		System.out.println(s1.equals(s2) ? "Same text" : "Different text"); // for comparing strings. case-sensitive. Compares this string to the specified object.
 		System.out.println(s1.equalsIgnoreCase(s2) ? "Same test" : "Different text"); // Compares this String to another String, ignoring case considerations. Case-insensitive.
-		
 	}
 	
 	public static void isEqualStringLiteral() {
 		String s1 = "ankara";
 		String s2 = "ankara";
-		System.out.println(s1 == s2 ? "Same Object" : "Different Object"); // s1 and s2 point to the same object address.
+		System.out.println(s1 == s2 ? "Same Object" : "Different Object"); // s1 and s2 point to the same object address. == is reference comparison.
 		// compiler doesn't create new String object for same string literal. That's why s1 and s2 have same reference.
 		// It means one object created. This indicates memory optimization.
 		// Same reference doesn't lead to a problem since Strings are immutable.
