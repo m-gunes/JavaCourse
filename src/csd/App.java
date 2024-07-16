@@ -2,7 +2,7 @@ package csd;
 
 import csd.homework.Homework;
 import csd.homework_2.Question_1;
-import csd.lessons.Lesson41;
+import csd.lessons.StringLes41;
 
 class App {
 	public static void main(String [] args) 
@@ -10,7 +10,7 @@ class App {
 //		DoubleProbabilityApp.run();
 //		Homework.two_5();
 		
-		Lesson41.run();
+		StringLes41.run();
 		
 		
 	
