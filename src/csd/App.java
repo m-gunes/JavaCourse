@@ -3,18 +3,63 @@ package csd;
 import csd.homework.Homework;
 import csd.homework_2.Question_1;
 import csd.lessons.StringLes41;
+import csd.lessons.StringLes42;
 
 class App {
 	public static void main(String [] args) 
 	{	
-//		DoubleProbabilityApp.run();
-//		Homework.two_5();
+//		StringUtilCountStringTest.run();
+		StringLes42.run();
+	}
+}
+
+
+class StringUtilCountStringTest {
+	public static void run() {
 		
-		StringLes41.run();
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
+		while(true) {
+			System.out.print("Bir yazi giriniz:");
+			String s1 = kb.nextLine();
+
+			if("elma".equals(s1))
+				break;
+			
+			System.out.print("Ikinci yaziyi giriniz:");
+			String s2 = kb.nextLine();
+			
+			System.out.printf("Count: %d%n", StringUtil.countString(s1, s2));
+			
+
+			
+		}
+	}
+}
+
+
+class StringUtil {
+	public static int countString(String s1, String s2) {
+		int count = 0;
+		int currentIndex = 0;
 		
-	
+		for(int i = s1.length()-1; i > 0 ; --i) {
+			currentIndex = s1.indexOf(s2);
+			String startIndex = s1.substring(currentIndex + s2.length());
+			if(currentIndex != -1) {
+				
+				
+				++count;
+			}
+		}
 		
+		return count;
+	}
+}
+
+
+
+//			fullText = fullText.isEmpty() ? s : fullText + "-" + s; 
 //		for(int i = 0; i < len; ++i)
 //			System.out.printf("%c ", s.charAt(i));
 //			
@@ -42,8 +87,6 @@ class App {
 //		java.util.Random rr = new java.util.Random(100);
 //		for(int i = 0; i < 10; ++i)
 //			System.out.printf("%d ", rr.nextInt(100));
-	}
-}
 
 class DoubleProbabilityApp{
 	public static void run() {
