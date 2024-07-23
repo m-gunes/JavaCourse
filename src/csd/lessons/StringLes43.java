@@ -3,7 +3,7 @@ package csd.lessons;
 public class StringLes43 {
 	
 	public static void run() {
-		FileNameTest.run();
+		StringCharactersReportApp.run();
 	}
 	
 	public static void lastIndexOf() {
@@ -13,6 +13,11 @@ public class StringLes43 {
 		System.out.println(text.indexOf(s));
 		System.out.println(text.lastIndexOf(s, 22));
 //		System.out.println(text.lastIndexOf(s, 27));
+	}
+	
+	public static void stringWithNumber() {
+		System.out.println("Java" + 10 + 11); //Java1011
+		System.out.println(10 + 11 + "Java"); //21Java
 	}
 }
 
@@ -105,12 +110,106 @@ class FileUtil {
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------
+IntegerDecimalOccurence 
+String pattern matching in decimal representations of ints.
+
+Task description
+Two integers A and B are given. We are interested in positions at which decimal representation of A occurs as a substring 
+in the decimal representation of B (counting from 0) For example:
+
+	- 53 occurs in 1953786 at position 2.
+	- 78 occurs in 1953786786 at positions 4 and 7
+	- 57 does not occur in 153786.
+
+Decimal representations are assumed to be big-endian and without leading zeros (the only exception being the number 0, whose 
+decimal representation is "0")
+
+Write function
+	
+	class Solution { public int solution(int A, int B); }
+
+that, given two integers A and B, returns the leftmost position at which A occurs in B the function should return -1 
+if A does not occur in B. 
+For example, given A = 53 and B = 195378653, the function should return 2, as explained above.
+Assume that:
+	
+	- A and B are integers within the range [0..999,999,999].
+	
+In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
+---------------------------------------------------------------------------------------------------------------------*/
+
+
+class SolutionTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while (true) {
+			System.out.print("Input first number:");
+			int a = Integer.parseInt(kb.nextLine());
+			
+			System.out.print("Input second number:");
+			int b = Integer.parseInt(kb.nextLine());
+			
+			Solution s = new Solution();
+			
+			System.out.printf("Position:%d%n", s.solution(a, b));
+			
+			if (a == 0 && b == 0)
+				break;
+		}
+	}
+}
+
+
+class Solution { 
+	public int solution(int A, int B) {
+		return (B + "").indexOf(A + "");
+	}
+}
 
 
 
+//////// Character
 
+class StringCharactersReportApp {
+	public static void printReport(String s) {
+		int len = s.length();
+		int whitespaceCount = 0;
+		int letterCount = 0;
+		int digitCount = 0;
+		
+		for(int i = 0; i < len; ++i) {
+			char c = s.charAt(i);
+			
+			if(Character.isWhitespace(c))
+				++whitespaceCount;
+			else if(Character.isLetter(c))
+				++letterCount;
+			else if(Character.isDigit(c))
+				++digitCount;
+		}
 
-
+		System.out.printf("Whitespace count:%d%n", whitespaceCount);
+		System.out.printf("Letter count:%d%n", letterCount);
+		System.out.printf("Digit count:%d%n", digitCount);
+		System.out.printf("Others:%d%n", len - whitespaceCount - letterCount - digitCount);		
+	}
+	
+	public static void run() {
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while(true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			printReport(s);
+			
+			if("quit".equals(s))
+				break;
+		}
+	}
+}
 
 
 
