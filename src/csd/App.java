@@ -10,52 +10,41 @@ class App {
 	{	
 //		StringUtilCountStringTest.run();
 		StringLes42.run();
+//		String s = StringUtil.capitalize("bugun hava COK Guzel degil mi?");
+//		System.out.print(s);
+
+		
 	}
 }
-
-
-class StringUtilCountStringTest {
-	public static void run() {
-		
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		while(true) {
-			System.out.print("Bir yazi giriniz:");
-			String s1 = kb.nextLine();
-
-			if("elma".equals(s1))
-				break;
-			
-			System.out.print("Ikinci yaziyi giriniz:");
-			String s2 = kb.nextLine();
-			
-			System.out.printf("Count: %d%n", StringUtil.countString(s1, s2));
-			
-
-			
-		}
-	}
-}
-
 
 class StringUtil {
-	public static int countString(String s1, String s2) {
-		int count = 0;
-		int currentIndex = 0;
+	
+//	public static String trim(String s) {
+//		
+//	}
+//	
+//	public static String trimLeading(String s) {
+//		
+//	}
+//	
+//	public static String trimTrailing(String s) {
+//		
+//	}
+	
+	
+	public static String capitalize(String s) {
+		if(s.isEmpty())
+			return s;
 		
-		for(int i = s1.length()-1; i > 0 ; --i) {
-			currentIndex = s1.indexOf(s2);
-			String startIndex = s1.substring(currentIndex + s2.length());
-			if(currentIndex != -1) {
-				
-				
-				++count;
-			}
-		}
-		
-		return count;
+		char firstLetter = s.charAt(0);
+		return Character.toUpperCase(firstLetter) + s.toLowerCase().substring(1);
 	}
 }
+
+
+
+
+
 
 
 

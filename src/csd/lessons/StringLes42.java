@@ -2,7 +2,7 @@ package csd.lessons;
 
 public class StringLes42 {
 	public static void run() {
-		concatWithHyphenApp.run();
+		StringUtilCountStringTest.run();;
 	}
 	
 	public static void concateStrings() {
@@ -77,7 +77,27 @@ public class StringLes42 {
 //		String str = s.substring(index + 1); // Exception: Range [7, 6) out of bounds for length 6
 		
 		System.out.println(str.isEmpty() ? "Empty string" : "String: " + str);
+	}
+	
+	public static void substringWithTwoParam() {
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
+		System.out.print("Input a string:");
+		String s = kb.nextLine();
+		s = s.substring(0,0);
+		System.out.println(s.isEmpty() ? "Empth string" : "String is" + s);
+		
+	}
+	
+	public static void indexOf() {
+		String text = "Bugün hava çok güzel, çok çok güzel A";
+		String s = "çok";
+		
+		System.out.println(text.indexOf('g'));
+		System.out.println(text.indexOf(65));
+		System.out.println(text.indexOf(s));
+		System.out.println(text.indexOf(s, 12));		
+		System.out.println(text.indexOf(s, 27));
 	}
 }
 
@@ -117,3 +137,54 @@ class concatWithHyphenApp {
 	}
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------	 
+Sınıf Çalışması: Parametresi ile aldığı iki yazıdan birinci içerisinde ikincisinden kaç olduğuna geri dönen countString 
+isimli metodu StringUtil isimli bir sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz
+-----------------------------------------------------------------------------------------------------------------------*/
+
+class StringUtilCountStringTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while (true) {
+			System.out.print("Birinci yazıyı giriniz:");
+			String s1 = kb.nextLine();
+			
+			if ("quit".equals(s1))
+				break;
+			
+			System.out.print("İkinci yazıyı giriniz:");
+			String s2 = kb.nextLine();
+			
+			System.out.printf("Count:%d%n", StringUtil.countString(s1, s2));
+		}
+	}
+}
+
+class StringUtil {
+	public static int countString(String s1, String s2) {
+		
+		int count = 0;
+		int idx = -1;
+
+		while((idx = s1.indexOf(s2, idx + 1)) != -1)
+			++count;
+		
+		return count;
+	}
+
+	public static int countStringV2(String s1, String s2) {
+		
+		int count = 0;
+		
+//		for (int i = -1; (i = s1.indexOf(s2, i + 1)) != -1; ++count) // alternative
+//			;
+		
+		for(int i = 0; (i = s1.indexOf(s2, i)) != -1; ++i, ++count)
+			;
+		
+		return count;
+	}
+}
