@@ -3,7 +3,7 @@ package csd.lessons;
 public class StringLes43 {
 	
 	public static void run() {
-		StringCharactersReportApp.run();
+		StringUtilCapitalizeTest.run();
 	}
 	
 	public static void lastIndexOf() {
@@ -214,8 +214,37 @@ class StringCharactersReportApp {
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: parametresi ile aldığı bir yazının ilk karakteri büyük diğer karakterleri küçük harf olan 
+	biçimine geri dönen capitalize isimli metodu StringUtil sınıfı içerisinde yazınız ve test ediniz. Örneğin yazı 
+		bugün hava ÇOK güzel
+	ise elde edilecek yazı	
+		Bugün hava çok güzel
+	olacaktır.
+---------------------------------------------------------------------------------------------------------------------*/
 
+class StringUtilCapitalizeTest {	
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while (true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			
+			System.out.printf("(%s)%n", StringUtil3.capitalize(s));
+			
+			if ("quit".equals(s))
+				break;
+		}
+	}
+}
 
+class StringUtil3 {
+	public static String capitalize(String s) {
+		return s.isEmpty() ? s : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
+	}
+}
 
 
 
