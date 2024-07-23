@@ -4,16 +4,14 @@ import csd.homework.Homework;
 import csd.homework_2.Question_1;
 import csd.lessons.StringLes41;
 import csd.lessons.StringLes42;
+import csd.lessons.StringLes43;
 
 class App {
 	public static void main(String [] args) 
 	{	
-//		StringUtilCountStringTest.run();
-		StringLes42.run();
 //		String s = StringUtil.capitalize("bugun hava COK Guzel degil mi?");
 //		System.out.print(s);
-
-		
+		StringLes43.run();
 	}
 }
 
