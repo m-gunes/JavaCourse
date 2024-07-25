@@ -3,7 +3,7 @@ package csd.lessons;
 public class StringLes43 {
 	
 	public static void run() {
-		StringUtilCapitalizeTest.run();
+		StringUtilTrimMethodsTest.run();
 	}
 	
 	public static void lastIndexOf() {
@@ -18,6 +18,25 @@ public class StringLes43 {
 	public static void stringWithNumber() {
 		System.out.println("Java" + 10 + 11); //Java1011
 		System.out.println(10 + 11 + "Java"); //21Java
+	}
+	
+	public static void stripAndTrim(){		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		
+		while (true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			
+			System.out.printf("(%s)%n", s);
+			System.out.printf("(%s)%n", s.trim());
+			System.out.printf("(%s)%n", s.strip());
+			System.out.printf("(%s)%n", s.stripLeading());
+			System.out.printf("(%s)%n", s.stripTrailing());
+			
+			if ("exit".equals(s))
+				break;
+		}
 	}
 }
 
@@ -250,7 +269,73 @@ class StringUtil3 {
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------
+Sınıfı Çalışması: Aşağıda belirtilen metotları StrigUtil sınıfı içerisinde açıklamalara yazınız ve test ediniz.
+Açıklamalar:
+- Metotların prototipleri şunlardır:
+	public static String trim(String s);
+	public static String trimLeading(String s);
+	public static String trimTrailing(String s);
+	
+- Metotlar sırasıyla yazının başındaki ve sonundaki, yalnızca başındaki ve yalnızca sonundaki whitespace karakterleri
+atacaklardır.
 
+- Metotlar Java 11 öncesi için yazılacaktır. Yani stripXXX metotları kullanılmayacaktır
+---------------------------------------------------------------------------------------------------------------------*/
+
+
+class StringUtilTrimMethodsTest {	
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while (true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			
+			System.out.printf("(%s)%n", s);
+			System.out.printf("(%s)%n", StringUtil4.trim(s));			
+			System.out.printf("(%s)%n", StringUtil4.trimLeading(s));
+			System.out.printf("(%s)%n", StringUtil4.trimTrailing(s));
+			
+			if ("exit".equals(s))
+				break;
+		}
+	}
+}
+
+class StringUtil4 {
+	
+	public static String trim(String s) {
+		return trimTrailing(trimLeading(s));
+	}
+	
+	public static String trimLeading(String s) {
+		
+		int i = 0;
+		for(; i < s.length() && Character.isWhitespace(s.charAt(i)); ++i)
+			;
+		
+		return s.substring(i);
+
+		// alternative
+//		int idx = 0;
+//		while(idx < s.length() && Character.isWhitespace(s.charAt(idx)))
+//			++idx;
+//
+//		return s.substring(idx);
+	}
+	
+	public static String trimTrailing(String s) {
+		int i = s.length() - 1;
+
+		for(; i >= 0 && Character.isWhitespace(s.charAt(i)); --i)
+			;
+		
+		return s.substring(0, i + 1);	
+	}
+	
+}
 
 
 
