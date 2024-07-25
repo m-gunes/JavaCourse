@@ -2,7 +2,7 @@ package csd.lessons;
 
 public class StringLes44 {
 	public static void run() {
-		StringUtilReverseTest.run();
+		blankCheck();
 	}
 	
 	public static String changeCase(String s) {
@@ -37,6 +37,33 @@ public class StringLes44 {
 			
 			if("exit".equals(s))
 				break;
+		}
+	}
+	
+	public static void stringRepeat() {
+		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while(true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			if("exit".equals(s))
+				break;
+			System.out.printf("%s%n", s.repeat(5));
+		}
+	}
+	
+	public static void blankCheck() {
+		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while(true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			if("exit".equals(s))
+				break;
+			System.out.println(s.isBlank() ? "Blank string" : "Not a blank string");
+			System.out.println(s.isEmpty() ? "Empty string" : "Not a empth string");
 		}
 	}
 }
