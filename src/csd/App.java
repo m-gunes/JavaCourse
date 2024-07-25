@@ -5,44 +5,14 @@ import csd.homework_2.Question_1;
 import csd.lessons.StringLes41;
 import csd.lessons.StringLes42;
 import csd.lessons.StringLes43;
+import csd.lessons.StringLes44;
 
 class App {
 	public static void main(String [] args) 
 	{	
-//		String s = StringUtil.capitalize("bugun hava COK Guzel degil mi?");
-//		System.out.print(s);
-		StringLes43.run();
+		StringLes44.run();
 	}
 }
-
-class StringUtil {
-	
-//	public static String trim(String s) {
-//		
-//	}
-//	
-//	public static String trimLeading(String s) {
-//		
-//	}
-//	
-//	public static String trimTrailing(String s) {
-//		
-//	}
-	
-	
-	public static String capitalize(String s) {
-		if(s.isEmpty())
-			return s;
-		
-		char firstLetter = s.charAt(0);
-		return Character.toUpperCase(firstLetter) + s.toLowerCase().substring(1);
-	}
-}
-
-
-
-
-
 
 
 
