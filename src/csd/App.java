@@ -10,7 +10,93 @@ import csd.lessons.StringLes44;
 class App {
 	public static void main(String [] args) 
 	{	
-		StringLes44.run();
+		PadTest.run();
+	}
+}
+
+
+class PadTest {
+	public static void run() {
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while(true) {
+			System.out.print("input string:");
+			String s = kb.nextLine();
+			
+			if("exit".equals(s))
+				break;
+			
+			System.out.println(StringUtil.isPalindrome(s));
+			
+		}
+		
+	}
+}
+
+
+class StringUtil {
+	
+	public static String getAlphabeticString(String s) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < s.length(); ++i) {
+			if(Character.isAlphabetic(s.charAt(i)))
+				sb.append(s.charAt(i));
+		}
+		
+		return sb.toString();
+	}
+	
+	public static boolean isPalindrome(String s) {
+		
+		if(s.isBlank())
+			return false;
+		
+		String str = getAlphabeticString(s.toLowerCase());
+		return str.equals(new StringBuilder(str).reverse().toString());
+	}
+	
+	public static String getPad(char ch, int count) {
+		StringBuilder sb = new StringBuilder();
+		
+		while(count > 0) {
+			sb.append(ch);
+			--count;
+		}
+		return sb.toString();
+	}
+	
+	public static String padLeading(String s, int n, char ch) {
+		
+		int len = s.length();
+		if(n > len) {
+			int diff = n - len;
+			return getPad(ch, diff) + s;
+		}
+
+		return s;
+	}
+	
+	public static String padLeading(String s, int n) {
+		
+		return padLeading(s, n, ' ');
+		
+	}
+	
+	public static String padTrailing(String s, int n, char ch) {
+		
+		int len = s.length();
+		if(n > len) {
+			int diff = n - len;
+			return s + getPad(ch, diff);
+		}
+
+		return s;
+		
+	}
+	public static String padTrailing(String s, int n) {
+		return padTrailing(s, n, ' ');
 	}
 }
 
