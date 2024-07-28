@@ -2,7 +2,7 @@ package csd.lessons;
 
 public class StringLes45 {
 	public static void run() {
-		PangramTest.run();
+		StringUtilPalindromeTest.run();
 	}
 }
 
@@ -228,6 +228,91 @@ class StringUtil10 {
 }
 
 
+
+/*----------------------------------------------------------------------------------------------------------------------
+Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrome olup olmadığını test eden isPalindrome isimli
+metodu StringUtil sınıfı içerisinde yazınız ve test ediniz.
+Açıklamalar:
+ 	- Alfabetik olmayan karakterleri çıkartıldığında tersi kendisine eşit olan yazılara pandrom denir.
+ 	Örneğin
+ 		- Ey Edip Adana'da pide ye
+ 		- Anastas mum satsana
+ 		- Ali Papila
+ 	- Palindromlar case-insensitive'dir
+---------------------------------------------------------------------------------------------------------------------*/
+
+class StringUtilPalindromeTest {
+	public static void run() {
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		while(true) {
+			System.out.print("Input a string:");
+			String s = kb.nextLine();
+
+			if("exit".equals(s))
+				break;
+			
+			System.out.println(StringUtil11.isPalindrome(s) ? "Palindrome" : "Not a palindrome");
+		}
+	}
+}
+
+
+class StringUtil11 {
+	public static boolean isPalindrome(String s) {
+		int leftIdx = 0;
+		int rightIdx = s.length() - 1;
+//		s = s.toLowerCase();
+
+		while(leftIdx < rightIdx) {
+			
+			char cLeft = s.charAt(leftIdx);
+
+			if(!Character.isLetter(cLeft)) {
+				++leftIdx;
+				continue;
+			}
+
+			char cRight = s.charAt(rightIdx);
+			
+			if(!Character.isLetter(cRight)) {
+				--rightIdx;
+				continue;
+			}
+
+			if(Character.toLowerCase(cLeft) != Character.toLowerCase(cRight))
+				return false;
+
+			++leftIdx;
+			--rightIdx;
+		}
+
+		return true;
+	}
+	
+	
+	// old version. Not efficient
+	public static String getAlphabeticString(String s) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < s.length(); ++i) {
+			if(Character.isAlphabetic(s.charAt(i)))
+				sb.append(s.charAt(i));
+		}
+		
+		return sb.toString();
+	}
+	
+	public static boolean isPalindromeV2(String s) {
+		
+		if(s.isBlank())
+			return false;
+		
+		String str = getAlphabeticString(s.toLowerCase());
+		return str.equals(new StringBuilder(str).reverse().toString());
+	}
+}
 
 
 
