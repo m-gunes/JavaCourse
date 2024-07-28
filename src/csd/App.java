@@ -6,12 +6,13 @@ import csd.lessons.StringLes41;
 import csd.lessons.StringLes42;
 import csd.lessons.StringLes43;
 import csd.lessons.StringLes44;
+import csd.lessons.StringLes45;
 
 class App {
 	public static void main(String [] args) 
 	{	
 //		PadTest.run();
-		StringLes44.run();
+		StringLes45.run();
 	}
 }
 
