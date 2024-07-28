@@ -10,7 +10,8 @@ import csd.lessons.StringLes44;
 class App {
 	public static void main(String [] args) 
 	{	
-		PadTest.run();
+//		PadTest.run();
+		StringLes44.run();
 	}
 }
 

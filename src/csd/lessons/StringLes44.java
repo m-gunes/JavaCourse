@@ -2,7 +2,15 @@ package csd.lessons;
 
 public class StringLes44 {
 	public static void run() {
-		blankCheck();
+//		StringUtilIsPangramTest.run();
+char c;
+		
+		c = 68;
+		if(68 == 'D')
+			System.out.print("yes ");
+		
+		System.out.printf("c = %c%n %c%n", c, 'a');
+		System.out.println('a');
 	}
 	
 	public static String changeCase(String s) {
@@ -126,5 +134,114 @@ class StringUtil5 {
 	
 	public static String reverse3(String s) {
 		return new StringBuilder(s).reverse().toString(); // reverse metodunun en etkin ve compact yazımı
+	}
+}
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+Sınıf Çalışması: Parametresi ile aldığı bir yazının pangram olup olmadığını test eden isPangramTR ve isPangramEN 
+isimli metotları yazınız ve aşağıdaki kod ile test ediniz.
+Açıklamalar:
+	- İlgili dilin alfadbesindeki tüm karakterler kullanılarak oluşturulan ve içerisinde özel isim olmayan anlamlı 
+	cümlelere "pangram" denir. 
+	Örneğin tipik bir İnglizce pangram şudur:		
+		The quick brown fox jumps over the lazy dog.
+		
+	Örneğin tipik bir Türkçe pangram şudur:
+		Pijamalı hasta yağız şoföre çabucak güvendi.
+	
+	- Metotlar, cümlenin anlamına ve özel isim içerip içermediğine bakmayacaktır
+---------------------------------------------------------------------------------------------------------------------*/
+
+
+
+class StringUtilIsPangramTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		StringUtilIsPangramTRTest.run(kb);
+		StringUtilIsPangramENTest.run(kb);
+	}
+}
+
+class StringUtilIsPangramTRTest {
+	public static void run(java.util.Scanner kb)
+	{
+		while (true) {
+			System.out.print("Bir yazı giriniz:");
+			String s = kb.nextLine();
+			
+			if ("elma".equals(s))
+				break;
+			
+			System.out.println(StringUtil6.isPangramTR(s) ? "Pangram" : "Pangram değil");			
+		}
+	}
+}
+
+
+class StringUtilIsPangramENTest {
+	public static void run(java.util.Scanner kb)
+	{		
+		while (true) {
+			System.out.print("Input string:");
+			String s = kb.nextLine();
+			
+			if ("exit".equals(s))
+				break;
+			
+			System.out.println(StringUtil6.isPangramEN2(s) ? "Pangram" : "Not a pangram");			
+		}
+	}
+}
+
+class StringUtil6 {
+	public static boolean isPangram(String s, String alphabet) {
+		
+		for(int i = 0; i < alphabet.length(); ++i) {
+			if(s.indexOf(alphabet.charAt(i)) == -1)
+				return false;
+		}
+		
+		return true;
+	}
+
+	public static boolean isPangramTR(String s) {
+		return isPangram(s.toLowerCase(), "abcçdefgğhiıjklmnoöprsştuüvyz");
+	}
+	
+	public static boolean isPangramEN(String s) {
+		return isPangram(s.toLowerCase(), "abcdefghijklmnopqrstuvwxyz");
+	}
+	
+	public static boolean isPangramEN2(String s) {
+		
+		s = s.toLowerCase();
+		
+		for(char c = 'a'; c <= 'z'; ++c)
+			if(s.indexOf(c) == -1)
+				return false;
+		
+		return true;
+	}
+	
+	public static boolean isPrangamEN3(String s) {
+		s = s.toLowerCase();
+		for(int i = 0; i < 26; ++i)
+			if(s.indexOf((char)('a' + i)) == -1)
+				return false;
+		
+		return true;
+	}
+	
+	public static boolean isPangramEN4(String s) {
+		s = s.toLowerCase();
+		for(int i = 0; i < 26; ++i)
+			if(s.indexOf('a' + i) == -1)
+				return false;
+		
+		return true;
 	}
 }
