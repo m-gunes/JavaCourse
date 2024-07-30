@@ -1,8 +1,30 @@
 package csd.lessons;
 
+/*----------------------------------------------------------------------------------------------------------------------
+Anahtar Notlar: java.util.Scanner sınıfının çalışma sistemi gereği bazı sistemlerde aynı nesne ile nextLine ve
+temel türlere ilişkin nextXXX metotları peşpeşe kullanılmamalıdır. Bu Scanner açısından bir problem değildir, 
+Scanner'ın içsel çalışması ile ilgili sistemin içsel yapısı gereği oluşan bir sonuçtur. Detayının önemi yoktur.
+Programcı bu tip durumlarda hep nextLine metoduyla değerleri alması ve temel türler için ilgili parseXXX metotlarını
+çağırmalıdır
+---------------------------------------------------------------------------------------------------------------------*/
+
 public class StringLes45 {
 	public static void run() {
-		StringUtilPalindromeTest.run();
+//		StringUtilPalindromeTest.run();
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		while(true) {
+			System.out.print("Input a name:");
+			String name = kb.nextLine();
+			
+			if("exit".equals(name))
+				break;
+			
+			System.out.print("Input a no:");
+//			int no = kb.nextInt(); // Error: java.util.InputMismatchException
+			int no = Integer.parseInt(kb.nextLine());
+			
+			System.out.printf("no:%d name:%s%n", no, name);
+		}
 	}
 }
 
