@@ -12,7 +12,8 @@ class App {
 	public static void main(String [] args) 
 	{	
 //		PadTest.run();
-		StringLes45.run();
+//		StringLes45.run();
+		Homework.two_4();
 	}
 }
 

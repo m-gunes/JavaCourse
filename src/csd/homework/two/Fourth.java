@@ -3,6 +3,20 @@ Homework-002-4.sorunun çözümü
 
 Soru: Klavyeden bir height ve width değişkenleri için sayılar okuyunuz ve aşağıdaki deseni oluşturunuz:
 
+|*    |
+| *   |
+|  *  |
+|   * |
+|    *|
+|   * |
+|  *  |
+| *   |
+|*    |
+| *   |
+|  *  |
+|   * |
+|    *|
+
 
 Burada height tooplam satırların sayısı width ise | karakterlerinin arasındaki karakter alanı sayısıdır. 
 
@@ -39,18 +53,48 @@ class BallFallApp {
 
 class BallFall {
 	
+	public static void writeSpace(int begin, int end) {
+		for(int i = begin; i < end; ++i)
+			System.out.print(" ");
+	}
+	
+	public static void writeBall(int ballPosition, int end) {
+		writeSpace(0, ballPosition);
+		System.out.print("*");
+		writeSpace(ballPosition + 1, end);
+	}
+	
+	public static boolean updateRightFlagIfNecessary(boolean currentStatus, int ballPositon, int width) {
+		if(ballPositon == 0)
+			currentStatus = true;
+		else if(ballPositon == width - 1)
+			currentStatus = false;
+		return currentStatus;
+	}
+	
+	public static int updateBallPositon(int currentPosition, boolean right) {
+		if(right)
+			return currentPosition + 1;
+		return currentPosition - 1;
+//		return currentPositon + (right ? 1 : -1);
+	}
+	
+	
 	public static void play(int width, int height) {
 		boolean right = false;
 		int ballPosition = 0;
-		
+
 		for(int i = 0; i <= height; ++i) {
 			System.out.print('|');
-			System.out.print("xxxx");
+			writeBall(ballPosition, width);
+			if(width != 1) {
+				right = updateRightFlagIfNecessary(right, ballPosition, width);
+				ballPosition = updateBallPositon(ballPosition, right);
+			}
 			System.out.println('|');
 		}
 	}
 }
-
 
 
 
