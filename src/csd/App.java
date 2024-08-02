@@ -7,13 +7,15 @@ import csd.lessons.StringLes42;
 import csd.lessons.StringLes43;
 import csd.lessons.StringLes44;
 import csd.lessons.StringLes45;
+import csd.lessons.StringLes46;
 
 class App {
 	public static void main(String [] args) 
 	{	
 //		PadTest.run();
 //		StringLes45.run();
-		Homework.two_4();
+//		Homework.two_4();
+		StringLes46.run();
 	}
 }
 
